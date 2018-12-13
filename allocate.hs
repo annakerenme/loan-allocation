@@ -17,7 +17,7 @@ allocate (Loan loanId  [LoanPart lpCents]) investorName investorSum
 loanPart1 = LoanPart 100
 id1 = ID 1
 loan = Loan id1 [loanPart1]
-test1= TestCase (assertEqual ("allocate loan to investor") (allocate loan "aa" 105) (Just (Investor (ID 1) "aa" 105 [100])))
+test1 = TestCase (assertEqual ("allocate loan to investor when investor can buy the loan in full") (allocate loan "aa" 105) (Just (Investor (ID 1) "aa" 105 [100])))
+test2 = TestCase (assertEqual ("fail to allocate wehn investor does not have enough money to buy loan in full") (allocate loan "aa" 99) (Nothing))
 
-
-tests = TestList [TestLabel "test1" test1]
+tests = TestList [TestLabel "test1" test1, TestLabel "test2" test2]
