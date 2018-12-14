@@ -4,10 +4,10 @@ import Test.HUnit
 data Cents= Cents Int deriving (Show, Eq)
 data ID = ID Int deriving (Show, Eq)
 data LoanPart = LoanPart Int deriving (Show, Eq)
-data Loan = Loan ID [LoanPart] deriving (Show, Eq)
+data Loan = Loan { loanId :: ID, listOfLoanParts :: [LoanPart] }  deriving (Show, Eq)
 
 data Name = Name String deriving (Show, Eq)
-data Investor = Investor ID String Int [Int] deriving (Show, Eq)
+data Investor = Investor { investorId :: ID, investorName :: String, investorFunds :: Int, loanParts :: [Int] } deriving (Show, Eq)
 
 allocate :: Loan -> String -> Int -> Maybe Investor
 allocate (Loan loanId  [LoanPart lpCents]) investorName investorSum
